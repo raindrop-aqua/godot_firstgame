@@ -1,12 +1,14 @@
 extends Area2D
+
 signal hit
 
-export var speed = 400
+export var speed : int = 400
 var screen_size: Vector2 
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
+
 
 func _process(delta: float):
 	# 移動に関する制御
@@ -42,7 +44,7 @@ func _process(delta: float):
 func _on_Player_body_entered(body):
 	hide();
 	emit_signal("hit")
-	$CollisionShape2D.set_deferred("disabled", false)
+	$CollisionShape2D.set_deferred("disabled", true)
 	
 
 func start(pos: Vector2):
